@@ -15,6 +15,7 @@ public class KoriWeaponGenerator : MonoBehaviour
 
     [Header("무기 프리팹 및 생성 간격 설정")]
     public GameObject[] weaponPrefab = new GameObject[2];
+    //public string[] weaponTag = new string[2];
     public float generationInterval = 5f;
 
     private WaitForSeconds waitInterval;
@@ -70,6 +71,9 @@ public class KoriWeaponGenerator : MonoBehaviour
         {
             yield return waitInterval;
             int random = Random.Range(0, weaponPrefab.Length);
+
+            //GameObject obj = ObjectPooler.Instance.SpawnFromPool(weaponTag[random], koriHeadPosition.position, Quaternion.identity);
+            //SpawnPosition(obj);
 
             SpawnPosition(Instantiate(weaponPrefab[random], koriHeadPosition.position, Quaternion.identity));
         }
